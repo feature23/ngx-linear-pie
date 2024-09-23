@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
-export interface NgxLinearPieSeries {
+export interface NgxLinearPieData {
     name: string;
     value: number;
     title?: string;
@@ -9,8 +9,8 @@ export interface NgxLinearPieSeries {
     className?: string;
 }
 
-interface NgxLinearPieSeriesViewModel {
-    series: NgxLinearPieSeries;
+interface NgxLinearPieViewModel {
+    data: NgxLinearPieData;
     percentage: number;
     backgroundColor: string;
     tooltip: string;
@@ -37,37 +37,37 @@ export class NgxLinearPieComponent {
         "#7B1FA2", // purple
     ];
 
-    readonly data = input.required<NgxLinearPieSeries[]>();
+    readonly data = input.required<NgxLinearPieData[]>();
 
     readonly allowClick = input<boolean>(false);
     readonly showLegend = input<boolean>(false);
     readonly valuesAsPercentages = input<boolean>(false);
 
-    readonly seriesClick = output<NgxLinearPieSeries>();
+    readonly sliceClick = output<NgxLinearPieData>();
 
     readonly total = computed<number>(() => this.data().reduce((acc, { value }) => acc + value, 0));
 
-    readonly seriesViewModels = computed<NgxLinearPieSeriesViewModel[]>(() =>
+    readonly viewModels = computed<NgxLinearPieViewModel[]>(() =>
         this.data()
         .filter(({ value }) => value > 0)
-        .map((series, index) => ({
-            series,
-            percentage: series.value / this.total() * 100,
-            backgroundColor: series.color || NgxLinearPieComponent.DefaultColors[index % NgxLinearPieComponent.DefaultColors.length],
-            tooltip: `${series.title ? series.title : series.name}: ${NgxLinearPieComponent.formatValue(series.value, this.total(), this.valuesAsPercentages())}`,
-            className: series.className || "",
-        } satisfies NgxLinearPieSeriesViewModel))
+        .map((data, index) => ({
+            data: data,
+            percentage: data.value / this.total() * 100,
+            backgroundColor: data.color || NgxLinearPieComponent.DefaultColors[index % NgxLinearPieComponent.DefaultColors.length],
+            tooltip: `${data.title ? data.title : data.name}: ${NgxLinearPieComponent.formatValue(data.value, this.total(), this.valuesAsPercentages())}`,
+            className: data.className || "",
+        } satisfies NgxLinearPieViewModel))
     );
 
-    onSeriesClick(series: NgxLinearPieSeries) {
+    onSliceClick(data: NgxLinearPieData) {
         if (this.allowClick()) {
-            this.seriesClick.emit(series);
+            this.sliceClick.emit(data);
         }
     }
 
-    onSeriesKeyUp(event: KeyboardEvent, series: NgxLinearPieSeries) {
+    onSliceKeyUp(event: KeyboardEvent, data: NgxLinearPieData) {
         if (event.key === "Enter") {
-            this.onSeriesClick(series);
+            this.onSliceClick(data);
         }
     }
 

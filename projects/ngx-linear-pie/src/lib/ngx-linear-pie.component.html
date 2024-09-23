@@ -1,29 +1,29 @@
 <div class="ngx-linear-pie-container" [class.clickable]="allowClick()">
-    @for (series of seriesViewModels(); track $index) {
+    @for (item of viewModels(); track $index) {
         <span
-            [matTooltip]="series.tooltip"
-            [className]="series.className"
-            [style.width.%]="series.percentage"
-            [style.background-color]="series.backgroundColor"
-            [ariaLabel]="series.tooltip"
+            [matTooltip]="item.tooltip"
+            [className]="item.className"
+            [style.width.%]="item.percentage"
+            [style.background-color]="item.backgroundColor"
+            [ariaLabel]="item.tooltip"
             tabIndex="0"
-            (click)="onSeriesClick(series.series)"
-            (keyup)="onSeriesKeyUp($event, series.series)"
+            (click)="onSliceClick(item.data)"
+            (keyup)="onSliceKeyUp($event, item.data)"
             ></span>
     }
 </div>
 @if (showLegend()) {
     <div class="ngx-linear-pie-legend">
-        @for (series of seriesViewModels(); track $index) {
+        @for (item of viewModels(); track $index) {
             <span
-                [class]="series.className"
+                [class]="item.className"
                 [class.clickable]="allowClick()"
                 [class.legend-item]="true"
                 tabIndex="0"
-                (click)="onSeriesClick(series.series)"
-                (keyup)="onSeriesKeyUp($event, series.series)">
-                <span class="legend-color" [style.background-color]="series.backgroundColor"></span>
-                <span class="legend-label">{{ series.tooltip }}</span>
+                (click)="onSliceClick(item.data)"
+                (keyup)="onSliceKeyUp($event, item.data)">
+                <span class="legend-color" [style.background-color]="item.backgroundColor"></span>
+                <span class="legend-label">{{ item.tooltip }}</span>
             </span>
         }
     </div>

@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { NgxLinearPieComponent, NgxLinearPieSeries } from '../../../ngx-linear-pie/src/public-api';
+import { NgxLinearPieComponent, NgxLinearPieData } from '../../../ngx-linear-pie/src/public-api';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -18,7 +18,7 @@ import { Subscription } from 'rxjs';
     styleUrl: './app.component.scss'
 })
 export class AppComponent {
-    static readonly DefaultData: Pick<NgxLinearPieSeries, "name" | "title">[] = [
+    static readonly DefaultData: Pick<NgxLinearPieData, "name" | "title">[] = [
         { name: "cs", title: "C#" },
         { name: "ts", title: "TypeScript" },
         { name: "html", title: "HTML" },
@@ -27,7 +27,7 @@ export class AppComponent {
         { name: "bash", title: "Bash" },
     ];
 
-    readonly data = signal<NgxLinearPieSeries[]>(AppComponent.DefaultData.map(s => ({
+    readonly data = signal<NgxLinearPieData[]>(AppComponent.DefaultData.map(s => ({
         ...s,
         value: Math.floor(Math.random() * 500)
     })));
@@ -39,8 +39,8 @@ export class AppComponent {
 
     readonly subscription = new Subscription();
 
-    onSeriesClick(series: NgxLinearPieSeries) {
-        alert(`Series clicked: ${series.name}`);
+    onSliceClick(slice: NgxLinearPieData) {
+        alert(`Slice clicked: ${slice.name}`);
     }
 
     toggleAnimate() {
