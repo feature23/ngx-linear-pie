@@ -1,0 +1,52 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ngx-linear-pie-container {
+    display: flex;
+    height: 0.5rem;
+    background-color: #cccccc;
+
+    &.clickable {
+        span {
+            cursor: pointer;
+        }
+    }
+
+    span {
+        display: inline-block;
+        height: 100%;
+        transition: width 0.5s ease;
+
+        &:not(:last-child) {
+            border-right: 0.1rem solid #333333;
+        }
+    }
+}
+
+.ngx-linear-pie-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .legend-item {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-right: 1rem;
+
+        &.clickable {
+            cursor: pointer;
+        }
+
+        .legend-color {
+            width: 0.5rem;
+            height: 0.5rem;
+            display: inline-block;
+            border-radius: 50%;
+        }
+    }
+}
+

@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+
+$theme: mat.define-theme();
+
+.primary-button {
+    @include mat.button-color($theme, $color-variant: primary);
+}
+
+html, body { height: 100%; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding: 1rem;
+}

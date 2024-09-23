@@ -1,0 +1,28 @@
+<div class="ngx-linear-pie-container" [class.clickable]="allowClick()">
+    @for (series of seriesViewModels(); track $index) {
+        <span
+            [matTooltip]="series.tooltip"
+            [className]="series.className"
+            [style.width.%]="series.percentage"
+            [style.background-color]="series.backgroundColor"
+            [ariaLabel]="series.tooltip"
+            tabIndex="0"
+            (click)="onSeriesClick(series.series)"
+            (keyup)="onSeriesKeyUp($event, series.series)"
+            ></span>
+    }
+</div>
+@if (showLegend()) {
+    <div class="ngx-linear-pie-legend">
+        @for (series of seriesViewModels(); track $index) {
+            <span class="legend-item"
+                [class.clickable]="allowClick()"
+                tabIndex="0"
+                (click)="onSeriesClick(series.series)"
+                (keyup)="onSeriesKeyUp($event, series.series)">
+                <span class="legend-color" [style.background-color]="series.backgroundColor"></span>
+                <span class="legend-label">{{ series.tooltip }}</span>
+            </span>
+        }
+    </div>
+}

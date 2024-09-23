@@ -1,0 +1,15 @@
+<h1>ngx-linear-pie Demo</h1>
+<div class="options">
+    <mat-checkbox [checked]="clickable()" (change)="clickable.set($event.checked)">Allow Click</mat-checkbox>
+    <mat-checkbox [checked]="showLegend()" (change)="showLegend.set($event.checked)">Show Legend</mat-checkbox>
+    <mat-checkbox [checked]="valuesAsPercentages()" (change)="valuesAsPercentages.set($event.checked)">Values as Percentages</mat-checkbox>
+    <div class="animate">
+        <button mat-flat-button class="primary-button" (click)="toggleAnimate()">{{ isAnimating() ? "Stop Animation" : "Animate" }}</button>
+    </div>
+</div>
+<ngx-linear-pie
+    [data]="data()"
+    [allowClick]="clickable()"
+    [showLegend]="showLegend()"
+    [valuesAsPercentages]="valuesAsPercentages()"
+    (seriesClick)="onSeriesClick($event)" />
