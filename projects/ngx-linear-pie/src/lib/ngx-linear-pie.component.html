@@ -16,6 +16,7 @@
     <div class="ngx-linear-pie-legend">
         @for (series of seriesViewModels(); track $index) {
             <span class="legend-item"
+                [className]="series.className"
                 [class.clickable]="allowClick()"
                 tabIndex="0"
                 (click)="onSeriesClick(series.series)"
