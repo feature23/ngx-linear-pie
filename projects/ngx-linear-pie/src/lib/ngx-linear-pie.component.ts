@@ -19,7 +19,6 @@ interface NgxLinearPieViewModel {
 
 @Component({
     selector: 'ngx-linear-pie',
-    standalone: true,
     imports: [
         MatTooltip,
     ],
