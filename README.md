@@ -18,3 +18,4 @@ See the [README](projects/ngx-linear-pie/README.md) for the ngx-linear-pie proje
 | v0.2.0 | v18 |
 | v0.3.0 | v19 |
 | v0.4.0 | v20 |
+| v0.5.0 | v21 |
