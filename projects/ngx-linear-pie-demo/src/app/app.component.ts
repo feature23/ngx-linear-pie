@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { NgxLinearPieComponent, NgxLinearPieData } from '../../../ngx-linear-pie/src/public-api';
@@ -7,13 +6,11 @@ import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     imports: [
-        RouterOutlet,
-        NgxLinearPieComponent,
-        MatButtonModule,
-        MatCheckbox,
-    ],
+    NgxLinearPieComponent,
+    MatButtonModule,
+    MatCheckbox
+],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
