@@ -10,3 +10,11 @@ We're hiring remote engineers to contribute to cutting-edge AI and custom softwa
 ## Getting Started
 
 See the [README](projects/ngx-linear-pie/README.md) for the ngx-linear-pie project to get started.
+
+## Angular Version Compatibility
+
+| ngx-linear-pie version | Angular version |
+| --- | --- |
+| v0.2.0 | v18 |
+| v0.3.0 | v19 |
+| v0.4.0 | v20 |
