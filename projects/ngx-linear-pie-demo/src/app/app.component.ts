@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { NgxLinearPieComponent, NgxLinearPieData } from '../../../ngx-linear-pie/src/public-api';
@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
     MatCheckbox
 ],
     templateUrl: './app.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './app.component.scss'
 })
 export class AppComponent {
