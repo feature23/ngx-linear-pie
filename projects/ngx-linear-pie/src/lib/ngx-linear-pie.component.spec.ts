@@ -15,6 +15,7 @@ describe('NgxLinearPieComponent', () => {
 
         fixture = TestBed.createComponent(NgxLinearPieComponent);
         component = fixture.componentInstance;
+        fixture.componentRef.setInput('data', []);
         fixture.detectChanges();
     });
 
